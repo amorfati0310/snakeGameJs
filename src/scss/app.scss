@@ -1,0 +1,35 @@
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.wrapper {
+  position: relative;
+  display: flex;
+  width: 600px;
+  flex-wrap: wrap;
+ }
+ .cell {
+   width: 20px;
+   height: 20px;
+   border: 1px solid #eee;
+   box-sizing: border-box;
+ }
+
+ .init-cell, .target-cell {
+   width: 20px;
+   height: 20px;
+   border: 1px solid #eee;
+   
+   box-sizing: border-box;
+   z-index: 10;
+   position: absolute;
+ }
+ .init-cell {
+   background: #fab005;
+ }
+ .target-cell {
+   background: #f03e3e;
+ }
