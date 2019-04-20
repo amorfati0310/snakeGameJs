@@ -5,25 +5,27 @@ const makeCell = (size = 900) => {
   return templateCell;
 };
 
-const randomPoint = () => {
-  const x = Math.floor(Math.random() * 30) * 20;
-  const y = Math.floor(Math.random() * 30) * 20;
-  return { x, y };
+const randomPoint = (size = 30) => Math.floor(Math.random() * size) * 20;
+
+const randomPointXY = () => {
+  return {
+    x: randomPoint(),
+    y: randomPoint()
+  };
+};
+
+const makePointEl = className => {
+  const el = document.createElement("div");
+  el.setAttribute("class", className);
+  const point = randomPointXY();
+  console.log("point", point);
+  el.setAttribute("style", `left: ${point.x}px; top: ${point.y}px;`);
+  return el;
 };
 
 const gameStart = () => {
-  const initEl = document.createElement("div");
-  initEl.setAttribute("class", "init-cell");
-  const initPoint = randomPoint();
-  initEl.setAttribute("style", `left: ${initPoint.x}px; top: ${initPoint.y}px;`);
-  console.log("initPoint", initPoint);
-
-  const targetEl = document.createElement("div");
-  targetEl.setAttribute("class", "target-cell");
-  const targetPoint = randomPoint();
-  console.log("targetPoint", targetPoint);
-  targetEl.setAttribute("style", `left: ${targetPoint.x}px; top: ${targetPoint.y}px;`);
-
+  const initEl = makePointEl("init-cell");
+  const targetEl = makePointEl("target-cell");
   const wrapper = document.querySelector(".wrapper");
   wrapper.appendChild(initEl);
   wrapper.appendChild(targetEl);
